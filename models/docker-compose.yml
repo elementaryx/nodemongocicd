@@ -1,0 +1,41 @@
+version: '3.0'
+
+services:
+
+    database:
+      image: mongo:latest
+      container_name: mongodb
+      hostname: mongodb
+      restart: always
+      ports:
+              - 28017:27017
+      networks:
+        mnnet: {}
+      environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: password123
+        MONGO_INITDB_DATABASE: EmployeeDB
+
+
+    app:
+      image: adrenalinerush/nodemongo:v1
+      container_name: node
+      hostname: node
+      depends_on:
+            - database
+      restart: always
+      ports:
+              - 80:3000
+      networks:
+              mnnet: {}
+      environment:
+        HOST: mongodb
+        DB: EmployeeDB
+        PORT: 27017
+        USERNAME: root
+        PASSWORD: password123
+
+
+
+networks:
+  mnnet: {}
