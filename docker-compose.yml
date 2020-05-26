@@ -15,6 +15,8 @@ services:
         MONGO_INITDB_ROOT_USERNAME: root
         MONGO_INITDB_ROOT_PASSWORD: password123
         MONGO_INITDB_DATABASE: EmployeeDB
+      volumes:
+        - mongo-data:/data/db:rw
 
 
     app:
@@ -34,8 +36,12 @@ services:
         PORT: 27017
         USERNAME: root
         PASSWORD: password123
-
-
+      volumes:
+        - node-data:/app:rw
 
 networks:
   mnnet: {}
+
+volumes:
+  mongo-data: {}
+  node-data: {}
