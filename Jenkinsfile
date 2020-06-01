@@ -13,12 +13,12 @@
         app = docker.build("adrenalinerush/nodemongoapp")
     }
 
-    stage('Test image') {
+    // stage('Test image') {
         
-        app.inside {
-            echo "Tests passed"
-        }
-    }
+    //     app.inside {
+    //         echo "Tests passed"
+    //     }
+    // }
 
     stage('Push image') {
         /* 
