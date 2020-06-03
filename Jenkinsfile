@@ -1,7 +1,7 @@
 pipeline {
   environment {
-    registry = "adrenalinerush/"
-    registryCredential = 'docker-hub'
+    registry = "adrenalinerush/nodeapp"
+    registryCredential = 'dockerhub'
     dockerImage = ''
   }
   agent any
