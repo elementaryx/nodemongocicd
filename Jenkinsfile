@@ -32,6 +32,12 @@ pipeline {
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
+    stage('checkout') {
+      steps {
+      git branch: 'master', url: 'https://github.com/nitrouskiller/nodemongocicd.git'
+      
+      }
+    }
     stage('Setting Terraform Path'){
       steps{
         script {
