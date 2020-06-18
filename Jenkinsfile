@@ -33,20 +33,20 @@ pipeline {
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
-    // stage('checkout') {
-    //   steps {
-    //   git branch: 'master', url: 'https://github.com/nitrouskiller/nodemongocicd.git'
+    stage('checkout') {
+      steps {
+      git branch: 'master', url: 'https://github.com/nitrouskiller/nodemongocicd.git'
       
-    //   }
-    // }
-    // stage('Setting Terraform Path'){
-    //   steps{
-    //     script {
-    //       def tfHome = tool name: 'Terraform'
-    //       env.PATH = "${tfHome}:${env.PATH}"
-    //     }
-    //   sh 'terraform —v'
-    //   }
-    // }
+      }
+    }
+    stage('Setting Terraform Path'){
+      steps{
+        script {
+          def tfHome = tool name: 'Terraform'
+          env.PATH = "${tfHome}:${env.PATH}"
+        }
+      sh 'terraform —v'
+      }
+    }
   }
 }
