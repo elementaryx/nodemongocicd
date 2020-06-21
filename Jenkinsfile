@@ -51,18 +51,18 @@ pipeline {
 
     stage('Terraform Init') {
       steps {
-        sh "${env.TERRAFORM_HOME}/Terraform/terraform init -input=false"
+        sh "terraform init -input=false Terraform/"
       }
     }
     stage('Terraform Plan') {
       steps {
-        sh "${env.TERRAFORM_HOME}/Terraform/terraform plan -out=tfplan -input=false -var-file='dev.tfvars'"
+        sh "terraform plan -out=tfplan -input=false -var-file='dev.tfvars' Terraform/"
       }
     }
     stage('Terraform Apply') {
       steps {
         input 'Apply Plan'
-        sh "${env.TERRAFORM_HOME}/Terraform/terraform apply -input=false tfplan"
+        sh "terraform apply -input=false tfplan Terraform/"
       }
     }
 
