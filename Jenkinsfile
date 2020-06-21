@@ -39,15 +39,15 @@ pipeline {
       
       }
     }
-    stage('Setting Terraform Path'){
-      steps{
-        script {
+    // stage('Setting Terraform Path'){
+    //   steps{
+    //     script {
           
-          env.PATH = "/bin/terraform"
-        }
-      sh 'terraform —version'
-      }
-    }
+    //       env.PATH = "/bin/terraform"
+    //     }
+    //   sh 'terraform —version'
+    //   }
+    // }
 
     stage('Terraform Init') {
       steps {
