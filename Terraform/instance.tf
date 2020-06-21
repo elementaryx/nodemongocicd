@@ -66,7 +66,7 @@ resource "aws_instance" "webserver" {
     instance_type = var.type
     key_name = "mykey"
     availability_zone  = "ap-south-1a"
-    user_data = file("install-docker.sh")
+    user_data = "${file("install-docker.sh")}"
     vpc_security_group_ids = ["${aws_security_group.webserver.id}",
                                "${aws_security_group.ssh.id}"]
     tags = {
