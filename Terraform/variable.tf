@@ -1,6 +1,6 @@
 variable "ami" {
   description = "ami id"
-  default = "ami-0447a12f28fddb066"
+  default = "ami-0e34e7b9ca0ace12d"
 }
 
 variable "type" {
