@@ -65,7 +65,7 @@ resource "aws_instance" "webserver" {
     ami = var.ami
     instance_type = var.type
     key_name = "mykey"
-    availability_zone  = "us-east-2c"
+    availability_zone  = "ap-south-1a"
     user_data = "${path.module}/install-docker.sh"
     vpc_security_group_ids = ["${aws_security_group.webserver.id}",
                                "${aws_security_group.ssh.id}"]
