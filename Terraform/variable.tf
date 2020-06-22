@@ -8,3 +8,16 @@ variable "type" {
   default = "t2.micro"
 }
 
+variable "AWS_ACCESS_KEY_ID" {
+  description = "access key"
+  type = "string"
+  
+}
+
+variable "AWS_SECRET_ACCESS_KEY" {
+  description = "secret key"
+   type = "string"
+  
+}
+
+
