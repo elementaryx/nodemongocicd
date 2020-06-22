@@ -56,12 +56,12 @@ pipeline {
     }
     stage('Terraform Plan') {
       steps {
-        sh "terraform plan -out=tfplan -input=false Terraform/"
+        sh "terraform plan -out=tfplan -var AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -var AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -input=false Terraform/"
       }
     }
     stage('Terraform Apply') {
       steps {
-        sh "terraform apply tfplan"
+        sh "terraform apply -auto-approve -var AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -var AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY Terraform/"
       }
     }
 
