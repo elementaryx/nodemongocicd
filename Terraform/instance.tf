@@ -58,7 +58,7 @@ resource "aws_security_group" "ssh" {
 }
 ############# TEMPLATE FILE #############
 data "template_file" "user_data" {
-template = "${file("userdata.sh")}"
+template = "${file("install-docker.sh")}"
 }
 
 ############# EC2 LAUNCH ##############
