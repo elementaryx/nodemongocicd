@@ -60,7 +60,7 @@ resource "aws_security_group" "ssh" {
 
 ############# EC2 LAUNCH ##############
 
-resource "aws_instance" "webserver" {
+resource "aws_instance" "nodemongo" {
 
     ami = var.ami
     instance_type = var.type
@@ -70,12 +70,12 @@ resource "aws_instance" "webserver" {
     vpc_security_group_ids = ["${aws_security_group.webserver.id}",
                                "${aws_security_group.ssh.id}"]
     tags = {
-        Name = "webserver"
+        Name = "nodemongo"
   }
 }
 
 ########## OUTPUT IP ###########
 
 output "ip"{
-value= "${aws_instance.webserver.public_ip}"
+value= "${aws_instance.nodemongo.public_ip}"
 }
