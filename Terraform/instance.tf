@@ -56,7 +56,10 @@ resource "aws_security_group" "ssh" {
       Name = "ssh"
   }
 }
-
+############# TEMPLATE FILE #############
+data "template_file" "user_data" {
+template = "${file("userdata.sh")}"
+}
 
 ############# EC2 LAUNCH ##############
 
@@ -66,7 +69,7 @@ resource "aws_instance" "nodemongo" {
     instance_type = var.type
     key_name = "mykey"
     availability_zone  = "us-west-2a"
-    user_data = file("install-docker.sh")
+    user_data = "${data.template_file.user_data.rendered}"
     vpc_security_group_ids = ["${aws_security_group.webserver.id}",
                                "${aws_security_group.ssh.id}"]
     tags = {
