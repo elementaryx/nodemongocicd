@@ -58,7 +58,7 @@ resource "aws_security_group" "ssh" {
 }
 ############# TEMPLATE FILE #############
 data "template_file" "init" {
-filename = "${path.module}/install-docker.tpl"
+filename = "install-docker.tpl"
 }
 
 ############# EC2 LAUNCH ##############
