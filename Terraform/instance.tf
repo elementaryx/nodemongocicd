@@ -69,7 +69,7 @@ resource "aws_instance" "nodemongo" {
     instance_type = var.type
     key_name = "mykey"
     availability_zone  = "us-west-2a"
-    user_data = "${data.template_file.user_data.rendered}"
+    user_data = "${data.template_file.user_data.template}"
     vpc_security_group_ids = ["${aws_security_group.webserver.id}",
                                "${aws_security_group.ssh.id}"]
     tags = {
