@@ -66,16 +66,8 @@ resource "aws_instance" "nodemongo" {
     instance_type = var.type
     key_name = "mykey"
     availability_zone  = "us-west-2a"
-    # user_data = "${path.module}/install-docker.sh"
-    user_data =   <<-EOF
-                      #!/bin/bash
-                      sudo su
-                      sudo yum -y install docker
-                      sudo usermod -a -G docker ec2-user
-                      sudo service docker restart
-                      sudo chkconfig docker on
-                    EOF
-
+    user_data = "${path.module}/install-docker.sh"
+    
     vpc_security_group_ids = ["${aws_security_group.webserver.id}",
                                "${aws_security_group.ssh.id}"]
     tags = {
