@@ -70,10 +70,10 @@ resource "aws_instance" "nodemongo" {
     user_data =   <<-EOF
                       #!/bin/bash
                       sudo su
-                      yum -y install httpd
-                      echo "<p> My Instance! </p>" >> /var/www/html/index.html
-                      sudo systemctl enable httpd
-                      sudo systemctl start httpd
+                      sudo yum -y install docker
+                      sudo usermod -a -G docker ec2-user
+                      sudo service docker restart
+                      sudo chkconfig docker on
                     EOF
 
     vpc_security_group_ids = ["${aws_security_group.webserver.id}",
