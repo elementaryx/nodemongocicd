@@ -67,5 +67,12 @@ pipeline {
       }
     }
 
+    // stage('Running docker ') {
+    //   steps {
+    //     sh "wget https://github.com/nitrouskiller/nodemongocicd/blob/master/docker-compose.yml"
+    //     sh "docker-compose up -d"
+    //   }
+    // }
+
   }
 }
